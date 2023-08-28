@@ -11,17 +11,18 @@ void binary_tree_delete(binary_tree_t *tree)
 	{
 		return;
 	}
-	 if (tree->parent)
-	 {
-		 if (tree->parent->left == tree)
-		 {
-			 tree->parent->left = NULL;
-		 }
-		 else if (tree->parent->right == tree)
-		 {
-			 tree->parent->right = NULL;
-		 }
-	 }
+
+	if (tree->parent)
+	{
+		if (tree->parent->left == tree)
+		{
+			tree->parent->left = NULL;
+		}
+		else if (tree->parent->right == tree)
+		{
+			tree->parent->right = NULL;
+		}
+	}
 	if (tree->left)
 	{
 		binary_tree_delete(tree->left);

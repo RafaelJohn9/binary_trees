@@ -29,6 +29,8 @@ typedef struct binary_tree_s avl_t;
 /* max binary heap */
 typedef struct binary_tree_s heap_t;
 
+void print_num(int n);
+
 void binary_tree_print(const binary_tree_t *tree);
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
