@@ -17,12 +17,9 @@ bst_t *array_to_bst(int *array, size_t size)
 	}
 	while (i < size)
 	{
-		if (array[i])
+		if (!(bst_insert(&root, array[i])))
 		{
-			if (!(bst_insert(&root, array[i])))
-			{
-				return (NULL);
-			}
+			return (NULL);
 		}
 		i++;
 	}
