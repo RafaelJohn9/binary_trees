@@ -31,7 +31,7 @@ int is_complete_recursive(const binary_tree_t *tree, int index, int size)
 		return (0);
 
 	return (is_complete_recursive(tree->left, 2 * index + 1, size) &&
-    is_complete_recursive(tree->right, 2 * index + 2, size));
+			is_complete_recursive(tree->right, 2 * index + 2, size));
 }
 
 /**
