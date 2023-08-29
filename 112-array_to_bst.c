@@ -20,5 +20,9 @@ bst_t *array_to_bst(int *array, size_t size)
 		bst_insert(&root, array[i]);
 		i++;
 	}
+	if(!root)
+	{
+		return (NULL);
+	}
 	return (root);
 }
