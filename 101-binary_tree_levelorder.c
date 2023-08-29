@@ -9,12 +9,14 @@
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-	if (!tree || !func)
-		return;
-
 	const binary_tree_t *current;
 	binary_tree_t *queue[1000];
-	int front = 0, rear = 0;
+	int front, rear;
+
+	front = 0;
+	rear = 0;
+	if (!tree || !func)
+		return;
 
 	queue[rear++] = (binary_tree_t *)tree;
 
