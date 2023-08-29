@@ -9,20 +9,19 @@
 bst_t *array_to_bst(int *array, size_t size)
 {
 	size_t i = 0;
-	bst_t *root;
+	bst_t *root = NULL;
 
-	if (size == 0)
+	if (size == 0 || !array)
 	{
 		return (NULL);
 	}
 	while (i < size)
 	{
-		bst_insert(&root, array[i]);
+		if (!bst_insert(&root, array[i]))
+		{
+			return (NULL);
+		}
 		i++;
-	}
-	if(!root)
-	{
-		return (NULL);
 	}
 	return (root);
 }
