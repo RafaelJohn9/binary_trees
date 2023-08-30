@@ -89,4 +89,5 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int is_complete_recursive(const binary_tree_t *tree, int index, int size);
 size_t binary_tree_size2(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 #endif
