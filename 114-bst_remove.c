@@ -1,6 +1,7 @@
 #include "binary_trees.h"
 
 bst_t *find_min(bst_t *node);
+
 /**
  * bst_remove - removes a node from a binary search tree
  * @root: a pointer to the root node of the tree
@@ -9,6 +10,8 @@ bst_t *find_min(bst_t *node);
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
+	bst_t *temp;
+
 	if (!root)
 		return NULL; /* Value not found */
 
@@ -25,19 +28,19 @@ bst_t *bst_remove(bst_t *root, int value)
 	{
 		if (!root->left)
 		{
-			bst_t *temp = root->right;
+			temp = root->right;
 			free(root);
 			return temp;
 		}
 		else if (!root->right)
 		{
-			bst_t *temp = root->left;
+			temp = root->left;
 			free(root);
 			return temp;
 		}
 
 		/* Node with two children, find the in-order successor */
-		bst_t *temp = find_min(root->right);
+		temp = find_min(root->right);
 
 		/* Copy the in-order successor's content to this node */
 		root->n = temp->n;
