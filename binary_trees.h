@@ -85,4 +85,6 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second);
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *node_a,
 const binary_tree_t *node_b);
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+int is_complete_recursive(const binary_tree_t *tree, int index, int size);
 #endif
