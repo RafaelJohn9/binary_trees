@@ -11,7 +11,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return (is_complete_recursive(tree, 0, binary_tree_size(tree)));
+	return (is_complete_recursive(tree, 0, binary_tree_size2(tree)));
 }
 
 /**
@@ -32,4 +32,17 @@ int is_complete_recursive(const binary_tree_t *tree, int index, int size)
 
 	return (is_complete_recursive(tree->left, 2 * index + 1, size) &&
     is_complete_recursive(tree->right, 2 * index + 2, size));
+}
+
+/**
+ * binary_tree_size2 - Measures the size of a binary tree
+ * @tree: Pointer to the root node of the tree to measure the size
+ * Return: Size of the tree, or 0 if tree is NULL
+ */
+
+size_t binary_tree_size2(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (0);
+	return (1 + binary_tree_size2(tree->left) + binary_tree_size2(tree->right));
 }
