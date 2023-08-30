@@ -1,19 +1,21 @@
 #include "binary_trees.h"
 
-bst_t *find_min(bst_t *node);
+/* Helper function to find the leftmost node (in-order successor) */
+static bst_t *find_min(bst_t *node);
 
 /**
  * bst_remove - removes a node from a binary search tree
  * @root: a pointer to the root node of the tree
  * @value: the value of the node to be removed
+ *
  * Return: a pointer to the new root node after removal
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	bst_t *temp;
+		bst_t *temp;
 
 	if (!root)
-		return NULL; /* Value not found */
+		return (NULL); /* Value not found */
 
 	/* Search for the node to be deleted */
 	if (value < root->n)
@@ -30,13 +32,13 @@ bst_t *bst_remove(bst_t *root, int value)
 		{
 			temp = root->right;
 			free(root);
-			return temp;
+			return (temp);
 		}
 		else if (!root->right)
 		{
 			temp = root->left;
 			free(root);
-			return temp;
+			return (temp);
 		}
 
 		/* Node with two children, find the in-order successor */
@@ -49,19 +51,19 @@ bst_t *bst_remove(bst_t *root, int value)
 		root->right = bst_remove(root->right, temp->n);
 	}
 
-	return root;
+	return (root);
 }
 
 /**
- * find_min - finds the leftmost node (in-order successor)
- * @node: a pointer to a node in the tree
- * Return: a pointer to the leftmost node
+ * find_min- finds the min node
+ * @node: node pointer
+ * Return: ptr
  */
-bst_t *find_min(bst_t *node)
+static bst_t *find_min(bst_t *node)
 {
 	while (node->left)
 	{
 		node = node->left;
 	}
-	return node;
+	return (node);
 }
