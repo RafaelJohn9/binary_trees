@@ -1,63 +1,110 @@
 #include "binary_trees.h"
 
-bst_t *find_min(bst_t *node);
 /**
- * bst_remove - Removes a node from a binary search tree.
- * @root: Pointer to the root node of the tree.
- * @value: Value to be removed from the tree.
- * Return: Pointer to the new root of the tree.
+ * search- searches for a value in a binary search tree
+ * @tree: node of the tree
+ * @value: int value to be searched
+ * Return: a pointer to the node found
  */
-bst_t *bst_remove(bst_t *root, int value)
+bst_t *search(const bst_t *tree, int value)
 {
-	bst_t *temp, *minRight;
-
-	if (!root)
+	if (!tree)
 	{
-		return (root);
+		return (NULL);
 	}
 
-	if (value < root->n)
+	if (value < tree->n)
 	{
-		root->left = bst_remove(root->left, value);
+		return (search(tree->left, value));
 	}
-	else if (value > root->n)
+	else if (value > tree->n)
 	{
-		root->right = bst_remove(root->right, value);
+		return (search(tree->right, value));
 	}
 	else
 	{
-		if (!root->left)
-		{
-			temp = root->right;
-			free(root);
-			return (temp);
-		}
-		else if (!root->right)
-		{
-			temp = root->left;
-			free(root);
-
-			return (temp);
-		}
-		minRight = find_min(root->right);
-		root->n = minRight->n;
-
-		root->right = bst_remove(root->right, minRight->n);
+		return ((bst_t *)tree);
 	}
-	return (root);
 }
 
 /**
- * find_min - Finds the node with the minimum value in a BST.
- * @node: Root node to start the search from.
- * Return: Pointer to the node with the minimum value.
+ * bst_remove- removes a node from a binary tree
+ * @root: ptr to the root node of the tree
+ * @value of the node to be removed
+ * Return: new root node after removing the desired value
  */
-bst_t *find_min(bst_t *node)
+bst_t *bst_remove(bst_t *root, int value)
 {
-	while (node->left)
-	{
-		node = node->left;
-	}
-	return (node);
-}
+	bst_t *replacer = NULL, *nodeToBeDeleted = NULL, *node=NULL;
 
+	if (!(nodeToBeDeleted =  search(root, value)))
+	{
+		return (NULL);
+	}
+	node = nodeToBeDeleted;
+	while (node)
+	{
+		if (node->right)
+		{
+			if (node->right->left)
+			{
+				replacer = node->right->left;
+				if (!replacer->right && !replacer->left)
+				{
+					break;
+				}
+				else if(replacer->left)
+				{
+					node = replacer->left;
+					continue;
+				}
+				else if(replacer->right)
+				{
+					node = replacer->right;
+				}
+			}
+			else if (node->right->right)
+			{
+				node = node->right;
+			}
+			else
+			{
+				replacer = node->right;
+			}
+		}
+		else if (node->left)
+		{
+			if (!node->parent)
+			{
+				root = node->left;
+			}
+			node->left->parent = node->parent;
+			binary_tree_delete(node);
+			return (root);
+		}
+		else
+		{
+			binary_tree_delete(node);
+			return (root);
+		}
+	}
+	if (replacer)
+	{
+		nodeToBeDeleted->parent = replacer->parent;
+		if (nodeToBeDeleted->parent->left == nodeToBeDeleted)
+		{
+			nodeToBeDeleted->parent->left = replacer;
+		}
+		else if (nodeToBeDeleted->parent->right == nodeToBeDeleted)
+		{
+			nodeToBeDeleted->parent->right = replacer;
+		}
+
+		nodeToBeDeleted->left = replacer->left;
+		nodeToBeDeleted->right = replacer->right;
+		if (!replacer->parent)
+			root = replacer;
+	}
+	binary_tree_delete(nodeToBeDeleted);
+	return (root);
+}
