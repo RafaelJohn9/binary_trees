@@ -4,11 +4,11 @@
 
 Write a function that creates a binary tree node
 
-- Prototype: `binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);`
-- Where parent is a pointer to the parent node of the node to create
-- And value is the value to put in the new node
-- When created, a node does not have any child
-- Your function must return a pointer to the new node, or NULL on failure
+Prototype: `binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);`
+Where parent is a pointer to the parent node of the node to create
+And value is the value to put in the new node
+When created, a node does not have any child
+Your function must return a pointer to the new node, or NULL on failure
 
 ``` sh
 alex@/tmp/binary_trees$ cat 0-main.c 
@@ -56,9 +56,9 @@ File: `0-binary_tree_node.c`
 
 Write a function that inserts a node as the left-child of another node
 
-- Prototype: `binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);`
+Prototype: `binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);`
 
-- Where parent is a pointer to the node to insert the tleft-child in
+Where parent is a pointer to the node to insert the tleft-child in
 And value is the value to store in the new node
 Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
 If parent already has a left-child, the new node must take its place, and the old left-child must be set as the left-child of the new node.
@@ -110,11 +110,11 @@ File: `1-binary_tree_insert_left.c`
 
 Write a function that inserts a node as the right-child of another node
 
-- Prototype: `binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);`
-- Where parent is a pointer to the node to insert the right-child in
-- And value is the value to store in the new node
-- Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
-- If parent already has a right-child, the new node must take its place, and the old right-child must be set as the right-child of the new node.
+Prototype: `binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value);`
+Where parent is a pointer to the node to insert the right-child in
+And value is the value to store in the new node
+Your function must return a pointer to the created node, or NULL on failure or if parent is NULL
+If parent already has a right-child, the new node must take its place, and the old right-child must be set as the right-child of the new node.
 
 ```sh
 alex@/tmp/binary_trees$ cat 2-main.c 
@@ -162,9 +162,9 @@ Github repository: ` binary_trees`
 
 Write a function that deletes an entire binary tree
 
-- Prototype: `void binary_tree_delete(binary_tree_t *tree);`
-- Where tree is a pointer to the root node of the tree to delete
-- If tree is NULL, do nothing
+Prototype: `void binary_tree_delete(binary_tree_t *tree);`
+Where tree is a pointer to the root node of the tree to delete
+If tree is NULL, do nothing
 
 ```sh
 alex@/tmp/binary_trees$ cat 3-main.c 
@@ -221,10 +221,10 @@ File: `3-binary_tree_delete.c`
 
 Write a function that checks if a node is a leaf
 
-- Prototype: `int binary_tree_is_leaf(const binary_tree_t *node);`
-- Where node is a pointer to the node to check
-- Your function must return 1 if node is a leaf, otherwise 0
-- If node is NULL, return 0
+Prototype: `int binary_tree_is_leaf(const binary_tree_t *node);`
+Where node is a pointer to the node to check
+Your function must return 1 if node is a leaf, otherwise 0
+If node is NULL, return 0
 
 ```sh
 alex@/tmp/binary_trees$ cat 4-main.c 
@@ -280,9 +280,9 @@ Write a function that checks if a given node is a root
 
 Prototype: `int binary_tree_is_root(const binary_tree_t *node);`
 
-- Where node is a pointer to the node to check
-- Your function must return 1 if node is a root, otherwise 0
-- If node is NULL, return 0
+Where node is a pointer to the node to check
+Your function must return 1 if node is a root, otherwise 0
+If node is NULL, return 0
 
 ```sh
 alex@/tmp/binary_trees$ cat 5-main.c 
@@ -337,13 +337,13 @@ File: `5-binary_tree_is_root.c`
 
 Write a function that goes through a binary tree using pre-order traversal
 
-- Prototype: `void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));`
+Prototype: `void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int));`
 
-- Where tree is a pointer to the root node of the tree to traverse
+Where tree is a pointer to the root node of the tree to traverse
 
-- And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
 
-- If tree or func is NULL, do nothing
+If tree or func is NULL, do nothing
 ```sh
 alex@/tmp/binary_trees$ cat 6-main.c
 #include <stdlib.h>
@@ -407,9 +407,9 @@ Write a function that goes through a binary tree using in-order traversal
 
 Prototype: `void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int));`
 
-- Where tree is a pointer to the root node of the tree to traverse
-- And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
-- If tree or func is NULL, do nothing
+Where tree is a pointer to the root node of the tree to traverse
+And func is a pointer to a function to call for each node. The value in the node must be passed as a parameter to this function.
+If tree or func is NULL, do nothing
 
 ```sh
 alex@/tmp/binary_trees$ cat 7-main.c
